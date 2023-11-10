@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flusix/screens/account/login.dart';
+import 'package:flusix/screens/account/registerGenre.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -15,7 +15,7 @@ class RegisterState extends State<Register> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
 
-  void _signupAccount() {
+  Future<void> _signupAccount() async {
     String fullname = _fullNameController.text.trim();
     String email = _emailController.text.trim();
     String password = _passwordController.text.trim();
@@ -26,18 +26,43 @@ class RegisterState extends State<Register> {
     } else if (password != confirmPassword) {
       _alertDialog('Error', 'Password tidak sama');
     } else {
-      CollectionReference user = FirebaseFirestore.instance.collection('user');
+      bool emailUsed = await _isEmailUsed(email);
 
-      user.add({'name': fullname, 'email': email, 'password': password}).then(
-          (DocumentReference document) {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Login()));
-        _alertDialog('Success', 'Berhasil membuat akun');
-      }).catchError((e) {
-        _alertDialog('Error', '$e');
-      });
+      if (emailUsed) {
+        _alertDialog('Error', 'Email sudah digunakan!');
+      } else {
+        CollectionReference user =
+            FirebaseFirestore.instance.collection('user');
+
+        user.add({'name': fullname, 'email': email, 'password': password}).then(
+            (DocumentReference document) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => RegisterGenre(
+                        fullname: fullname,
+                      )));
+          _alertDialog('Success', 'Berhasil membuat akun');
+        }).catchError((e) {
+          _alertDialog('Error', '$e');
+        });
+      }
     }
   }
+
+  Future<bool> _isEmailUsed(String email) async {
+  CollectionReference user = FirebaseFirestore.instance.collection('user');
+
+  QuerySnapshot querySnapshot =
+      await user.where('email', isEqualTo: email).get();
+
+  if (querySnapshot.docs.isNotEmpty) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 
   void _alertDialog(String title, String content) {
     showDialog(

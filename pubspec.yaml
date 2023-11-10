@@ -90,5 +90,11 @@ flutter:
   #
   assets:
     - assets/images/LOGO.png
+    - assets/genre/horror.png
+    - assets/genre/action.png
+    - assets/genre/drama.png
+    - assets/genre/music.png
+    - assets/genre/war.png
+    - assets/genre/crime.png
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

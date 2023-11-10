@@ -30,8 +30,9 @@ class _LoginState extends State<Login> {
           .then((QuerySnapshot querySnapshot) {
         if (querySnapshot.docs.isNotEmpty) {
           Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => HomeScreen()));
-          _alertDialog('Success', 'Selamat datang $email');
+              context,
+              MaterialPageRoute(
+                  builder: (context) => HomeScreen()));
         } else {
           _alertDialog('Error', 'Email atau password salah!');
         }
