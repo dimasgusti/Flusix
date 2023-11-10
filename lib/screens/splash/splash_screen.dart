@@ -1,3 +1,4 @@
+import 'package:flusix/screens/account/login.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -29,7 +30,8 @@ class SplashScreen extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Login()));
                 },
                 child: Text(
                   'Get Started',

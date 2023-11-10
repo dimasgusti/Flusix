@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flusix/screens/account/register.dart';
+import 'package:flusix/screens/dashboard/homescreen.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -10,6 +13,54 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+
+  void _signinAccount() {
+    String email = _emailController.text.trim();
+    String password = _passwordController.text.trim();
+
+    if (email.isEmpty || password.isEmpty) {
+      _alertDialog('Error', 'Isi data dengan benar!');
+    } else {
+      CollectionReference user = FirebaseFirestore.instance.collection('user');
+
+      user
+          .where('email', isEqualTo: email)
+          .where('password', isEqualTo: password)
+          .get()
+          .then((QuerySnapshot querySnapshot) {
+        if (querySnapshot.docs.isNotEmpty) {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          _alertDialog('Success', 'Selamat datang $email');
+        } else {
+          _alertDialog('Error', 'Email atau password salah!');
+        }
+      }).catchError((e) {
+        _alertDialog('Error', 'Terdapat kesalahan pada: $e');
+      });
+    }
+  }
+
+  void _alertDialog(String title, String content) {
+    showDialog(
+        context: context,
+        builder: ((context) {
+          return AlertDialog(
+            title: Text(title),
+            content: Text(
+              content,
+              style: TextStyle(color: Colors.black),
+            ),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('OK'))
+            ],
+          );
+        }));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +119,10 @@ class _LoginState extends State<Login> {
                 children: [
                   TextButton(
                       onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Register()));
                       },
                       child: Text(
                         'Continue to Sign Up',
@@ -79,7 +134,9 @@ class _LoginState extends State<Login> {
                     decoration: BoxDecoration(
                         color: Colors.yellow[800], shape: BoxShape.circle),
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _signinAccount();
+                      },
                       child: Icon(
                         Icons.navigate_next,
                         color: Colors.white,
