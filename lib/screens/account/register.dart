@@ -34,7 +34,10 @@ class RegisterState extends State<Register> {
         CollectionReference user =
             FirebaseFirestore.instance.collection('user');
 
-        user.add({'name': fullname, 'email': email, 'password': password}).then(
+        DateTime now = DateTime.now();
+        Timestamp createdAt = Timestamp.fromDate(now);
+
+        user.add({'name': fullname, 'email': email, 'password': password, 'created_at': createdAt}).then(
             (DocumentReference document) {
           Navigator.push(
               context,
@@ -51,18 +54,17 @@ class RegisterState extends State<Register> {
   }
 
   Future<bool> _isEmailUsed(String email) async {
-  CollectionReference user = FirebaseFirestore.instance.collection('user');
+    CollectionReference user = FirebaseFirestore.instance.collection('user');
 
-  QuerySnapshot querySnapshot =
-      await user.where('email', isEqualTo: email).get();
+    QuerySnapshot querySnapshot =
+        await user.where('email', isEqualTo: email).get();
 
-  if (querySnapshot.docs.isNotEmpty) {
-    return true;
-  } else {
-    return false;
+    if (querySnapshot.docs.isNotEmpty) {
+      return true;
+    } else {
+      return false;
+    }
   }
-}
-
 
   void _alertDialog(String title, String content) {
     showDialog(
