@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flusix/screens/account/register.dart';
 import 'package:flusix/screens/dashboard/homescreen.dart';
+import 'package:flusix/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -30,9 +31,7 @@ class _LoginState extends State<Login> {
           .then((QuerySnapshot querySnapshot) {
         if (querySnapshot.docs.isNotEmpty) {
           Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => HomeScreen()));
+              context, MaterialPageRoute(builder: (context) => HomeScreen()));
         } else {
           _alertDialog('Error', 'Email atau password salah!');
         }
@@ -151,9 +150,10 @@ class _LoginState extends State<Login> {
               ),
               TextButton(
                   onPressed: () {
-                    Navigator.pop(
-                      context,
-                    );
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SplashScreen()));
                   },
                   child: Text(
                     'Back',

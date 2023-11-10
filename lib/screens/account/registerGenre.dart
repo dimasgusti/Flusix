@@ -114,13 +114,6 @@ class _RegisterGenreState extends State<RegisterGenre> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        'Back',
-                      )),
                   Container(
                     decoration: BoxDecoration(
                         color: Colors.yellow[800], shape: BoxShape.circle),

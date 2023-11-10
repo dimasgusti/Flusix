@@ -1,5 +1,6 @@
 import 'package:flusix/screens/dashboard/dashboard.dart';
 import 'package:flusix/screens/order/order.dart';
+import 'package:flusix/screens/profile/editprofile.dart';
 import 'package:flusix/screens/profile/profile.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: false,
         backgroundColor: Color(0xFF333333),
         title: Text(
-          'Selamat datang!',
+          'Flusix',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFf9f7f7),
