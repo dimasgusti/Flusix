@@ -1,0 +1,40 @@
+{
+    "films": [
+      {
+        "title": "Guru Bangsa: Tjokroaminoto",
+        "director": "Garin Nugroho",
+        "year": 2015,
+        "genre": "Biography",
+        "rating": 8.1
+      },
+      {
+        "title": "AADC 2 (Ada Apa dengan Cinta 2)",
+        "director": "Riri Riza",
+        "year": 2016,
+        "genre": "Drama",
+        "rating": 7.6
+      },
+      {
+        "title": "Laskar Pelangi",
+        "director": "Riri Riza",
+        "year": 2008,
+        "genre": "Drama",
+        "rating": 8.0
+      },
+      {
+        "title": "Pengabdi Setan",
+        "director": "Joko Anwar",
+        "year": 2017,
+        "genre": "Horror",
+        "rating": 7.6
+      },
+      {
+        "title": "The Raid: Redemption",
+        "director": "Gareth Evans",
+        "year": 2011,
+        "genre": "Action",
+        "rating": 7.6
+      }
+    ]
+  }
+  

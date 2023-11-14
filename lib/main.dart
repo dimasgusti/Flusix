@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flusix/firebase_options.dart';
+import 'package:flusix/screens/dashboard/homescreen.dart';
 import 'package:flusix/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 

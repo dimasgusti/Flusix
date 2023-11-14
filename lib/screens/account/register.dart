@@ -21,7 +21,7 @@ class RegisterState extends State<Register> {
     String password = _passwordController.text.trim();
     String confirmPassword = _confirmPasswordController.text.trim();
 
-    if (email.isEmpty && fullname.isEmpty && password.isEmpty) {
+    if (email.isEmpty || fullname.isEmpty || password.isEmpty) {
       _alertDialog('Error', 'Isi data diri dengan benar!');
     } else if (password != confirmPassword) {
       _alertDialog('Error', 'Password tidak sama');

@@ -112,8 +112,8 @@ class _RegisterGenreState extends State<RegisterGenre> {
                 height: 24,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Spacer(),
                   Container(
                     decoration: BoxDecoration(
                         color: Colors.yellow[800], shape: BoxShape.circle),

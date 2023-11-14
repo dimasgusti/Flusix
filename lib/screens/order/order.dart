@@ -14,6 +14,7 @@ class _MyOrderState extends State<MyOrder> {
       body: Center(
         child: Column(
           children: [
+            SizedBox(height: 24,),
             Text(
               'My Tickets',
               style: TextStyle(
