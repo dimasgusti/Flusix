@@ -1,7 +1,7 @@
+import 'package:flusix/screens/purchase/newPurchase.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/movie.dart';
-import './movie_detail.dart';
 
 class VerticalListItem extends StatelessWidget {
   final int index;
@@ -13,18 +13,8 @@ class VerticalListItem extends StatelessWidget {
       children: <Widget>[
         GestureDetector(
           onTap: () {
-            Navigator.of(context).pushNamed(
-              MovieDetail.routeName,
-              arguments: {
-                'id': bestMovieList[index].id,
-                'title': bestMovieList[index].title,
-                'imageUrl': bestMovieList[index].imageUrl,
-                'description': bestMovieList[index].description,
-                'rating': bestMovieList[index].rating,
-                'year': bestMovieList[index].year,
-                'duration': bestMovieList[index].duration,
-              },
-            );
+            Navigator.push(
+              context, MaterialPageRoute(builder: (context) => NewPurchase()));
           },
           child: Card(
             elevation: 5,

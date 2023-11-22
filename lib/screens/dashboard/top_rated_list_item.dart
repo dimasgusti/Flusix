@@ -1,7 +1,7 @@
+import 'package:flusix/screens/purchase/newPurchase.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/movie.dart';
-import './movie_detail.dart';
 
 class TopRatedListItem extends StatelessWidget {
   final int index;
@@ -14,18 +14,8 @@ class TopRatedListItem extends StatelessWidget {
       width: 160,
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).pushNamed(
-            MovieDetail.routeName,
-            arguments: {
-              'id': topRatedMovieList[index].id,
-              'title': topRatedMovieList[index].title,
-              'imageUrl': topRatedMovieList[index].imageUrl,
-              'description': topRatedMovieList[index].description,
-              'rating': topRatedMovieList[index].rating,
-              'year': topRatedMovieList[index].year,
-              'duration': topRatedMovieList[index].duration,
-            },
-          );
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => NewPurchase()));
         },
         child: Column(
           children: <Widget>[

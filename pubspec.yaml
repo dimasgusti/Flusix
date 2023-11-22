@@ -96,5 +96,8 @@ flutter:
     - assets/genre/music.png
     - assets/genre/war.png
     - assets/genre/crime.png
+    - assets/images/poster.png
+    - assets/images/Kursi-kursi.png
+    - assets/images/poster2.png
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

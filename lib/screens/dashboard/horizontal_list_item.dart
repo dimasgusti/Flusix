@@ -1,5 +1,5 @@
+import 'package:flusix/screens/purchase/newPurchase.dart';
 import 'package:flutter/material.dart';
-import './movie_detail.dart';
 
 import '../../model/movie.dart';
 
@@ -14,18 +14,8 @@ class HorizontalListItem extends StatelessWidget {
       width: 160,
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).pushNamed(
-            MovieDetail.routeName,
-            arguments: {
-              'id': movieList[index].id,
-              'title': movieList[index].title,
-              'imageUrl': movieList[index].imageUrl,
-              'description': movieList[index].description,
-              'rating': movieList[index].rating,
-              'year': movieList[index].year,
-              'duration': movieList[index].duration,
-            },
-          );
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => NewPurchase()));
         },
         child: Column(
           children: <Widget>[

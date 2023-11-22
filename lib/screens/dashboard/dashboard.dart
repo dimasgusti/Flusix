@@ -1,10 +1,9 @@
-import 'package:flusix/screens/dashboard/movie_detail.dart';
+import 'package:flusix/screens/purchase/newPurchase.dart';
 import 'package:flutter/material.dart';
 import 'package:flusix/model/movie.dart';
 import 'package:flusix/screens/dashboard/horizontal_list_item.dart';
 import 'package:flusix/screens/dashboard/top_rated_list_item.dart';
 import 'package:flusix/screens/dashboard/vertical_list_item.dart';
-
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -14,13 +13,9 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  void _navigateToMovieDetail(BuildContext context, Movie movie) {
+  void _newPurchase() {
     Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MovieDetail(movie),
-      ),
-    );
+        context, MaterialPageRoute(builder: (context) => NewPurchase()));
   }
 
   @override
@@ -54,7 +49,7 @@ class _DashboardState extends State<Dashboard> {
                 scrollDirection: Axis.horizontal,
                 itemCount: movieList.length,
                 itemBuilder: (ctx, i) => GestureDetector(
-                  onTap: () => _navigateToMovieDetail(context, movieList[i]),
+                  onTap: () => _newPurchase(),
                   child: HorizontalListItem(i),
                 ),
               ),
@@ -90,7 +85,7 @@ class _DashboardState extends State<Dashboard> {
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: bestMovieList.length,
                 itemBuilder: (ctx, i) => GestureDetector(
-                  onTap: () => _navigateToMovieDetail(context, bestMovieList[i]),
+                  onTap: () => _newPurchase(),
                   child: VerticalListItem(i),
                 ),
               ),
@@ -125,7 +120,7 @@ class _DashboardState extends State<Dashboard> {
                 scrollDirection: Axis.horizontal,
                 itemCount: topRatedMovieList.length,
                 itemBuilder: (ctx, i) => GestureDetector(
-                  onTap: () => _navigateToMovieDetail(context, topRatedMovieList[i]),
+                  onTap: () => _newPurchase(),
                   child: TopRatedListItem(i),
                 ),
               ),
